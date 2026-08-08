@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Responsive Theme Changer</title>
+    
+    <style>
+        /* =======================================================
+           1. RESET & FULL SCREEN SETUP
+           ======================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh; /* Poori screen ki height */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Faltu scrollbars ko khatam karne ke liye */
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sabhi sections ke liye basic centering aur smooth color transition */
+        header, nav, main, article, aside, footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            transition: background-color 0.5s ease, color 0.5s ease; /* Rang jhatke se change nahi honge */
+        }
+
+        /* Fixed heights for Header, Nav, and Footer */
+        header { height: 15vh; }
+        nav    { height: 10vh; }
+        footer { height: 10vh; }
+
+        /* Main container jo bachi hui 65% height lega */
+        .main-container {
+            height: 65vh; 
+            display: flex;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        /* Navigation Links */
+        .site-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .site-nav a {
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* =======================================================
+           2. MOBILE THEME (Default Screen Size)
+           ======================================================= */
+        .main-container { flex-direction: column; } /* Mobile me ek ke niche ek */
+        .main-content { flex: 2; position: relative; }
+        .site-article { background: rgba(0, 0, 0, 0.15); border-radius: 6px; padding: 15px; margin-top: 10px; width: 100%; }
+        .site-aside { flex: 1; }
+
+        /* Mobile Colors (Crimson & Orange Theme) */
+        .site-header  { background-color: #7f1d1d; color: #ffffff; } 
+        .site-nav     { background-color: #f59e0b; color: #000000; } 
+        .site-nav a   { color: #000000; }
+        .main-content { background-color: #ea580c; color: #ffffff; } 
+        .site-aside   { background-color: #ca8a04; color: #000000; } 
+        .site-footer  { background-color: #1c1917; color: #ffffff; } 
+
+        /* =======================================================
+           3. DESKTOP THEME (Screens 992px and above)
+           ======================================================= */
+        @media (min-width: 992px) {
+            .main-container { flex-direction: row; } 
+            .main-content { flex: 3; } /* Desktop par main content barha ho jayega */
+            .site-aside { flex: 1; }
+
+            /* Desktop Colors (Cyberpunk / Neon Royal Theme) */
+            .site-header  { background-color: #1e1b4b; color: #38bdf8; } 
+            .site-nav     { background-color: #4c1d95; color: #f472b6; } 
+            .site-nav a   { color: #f472b6; }
+            .main-content { background-color: #db2777; color: #ffffff; } 
+            .site-aside   { background-color: #6d28d9; color: #ffffff; } 
+            .site-footer  { background-color: #030712; color: #9ca3af; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>HEADER SECTION</h1>
+    </header>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a href="#">NAV LINK 1</a></li>
+            <li><a href="#">NAV LINK 2</a></li>
+            <li><a href="#">NAV LINK 3</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        
+        <main class="main-content">
+            <h2>MAIN CONTENT</h2>
+            
+            <article class="site-article">
+                <h3>ARTICLE SECTION</h3>
+                <p>Browser ki window ko chota-bada (resize) karke rang badalte huye dekhein!</p>
+            </article>
+        </main>
+
+        <aside class="site-aside">
+            <h3>ASIDE SECTION</h3>
+        </aside>
+
+    </div>
+
+    <footer class="site-footer">
+        <p>FOOTER SECTION &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
